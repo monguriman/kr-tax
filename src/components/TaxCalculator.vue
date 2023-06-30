@@ -13,6 +13,9 @@
             모든 급여가 원천징수영수증에 포함되어 있지 않다면 실제 공제액은
             달라질 수 있음.
           </li>
+          <li>
+            원천징수영수증에 없는 근로소득(해외지급액)은 별도의 종합소득세 신고를 통해 신고하여야 할 수 있음.
+          </li>
         </ul>
       </div>
       <v-form @submit.prevent="calculateForeignTaxCredit">
