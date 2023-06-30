@@ -4,17 +4,20 @@
       <h2>외납세 간이 계산기</h2>
       <v-form @submit.prevent="calculateForeignTaxCredit">
         <v-text-field
-          v-model.lazy="annualIncome"
+          v-model="annualIncome"
           label="연간 총급여"
           type="number"
           required
           @input="validateInput"
+          variant="underlined"
         ></v-text-field>
         <v-text-field
           v-model="foreignIncome"
           label="연간 총급여 중 국외근로소득"
           type="number"
           required
+          @input="validateInput"
+          variant="underlined"
           ><div v-if="foreignIncome < 0" class="error-text">
             <span>음수는 입력할 수 없습니다.</span>
           </div></v-text-field
@@ -24,6 +27,8 @@
           label="연간 총급여 중 국내근로소득"
           type="number"
           required
+          @input="validateInput"
+          variant="underlined"
           ><div v-if="koreanIncome < 0" class="error-text">
             <span>음수는 입력할 수 없습니다.</span>
           </div></v-text-field
@@ -33,6 +38,8 @@
           label="산출세액"
           type="number"
           required
+          @input="validateInput"
+          variant="underlined"
           ><div v-if="calculatedTax < 0" class="error-text">
             <span>음수는 입력할 수 없습니다.</span>
           </div></v-text-field
@@ -42,7 +49,7 @@
       <div v-if="foreignTaxCredit !== null">
         <h2>외국납부세액공제 적용 가능액</h2>
         <p>
-          Calculation: {{ calculatedTax }} / {{ annualIncome }} *
+          {{ calculatedTax }} / {{ annualIncome }} *
           {{ foreignIncome }} = {{ foreignTaxCredit }}
         </p>
       </div>
