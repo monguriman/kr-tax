@@ -4,7 +4,7 @@
       <h2>외납세 간이 계산기</h2>
       <div>
         <h4>준비물</h4>
-        원천징수영수증 <span @click="showModalDownloadGuide = true" style="color: blue; cursor: pointer; text-decoration:underline;">(다운로드 방법)</span>
+        원천징수영수증 <span @click="showModalDownloadGuide = true" style="color: blue; cursor: pointer; font-size: 0.7em">어디서 다운받나요?</span>
       </div>
       <div>
         <h4>유의사항</h4>
@@ -18,6 +18,7 @@
       <v-form @submit.prevent="calculateForeignTaxCredit">
         <v-text-field
           v-model="annualIncome"
+          :value="annualIncome.toLocaleString()"
           label="연간 총급여"
           type="number"
           required
@@ -31,9 +32,7 @@
           required
           @input="validateInput"
           variant="underlined"
-          ><div v-if="foreignIncome < 0" class="error-text">
-            <span>음수는 입력할 수 없습니다.</span>
-          </div></v-text-field
+          ></v-text-field
         >
         <v-text-field
           v-model="koreanIncome"
@@ -42,9 +41,7 @@
           required
           @input="validateInput"
           variant="underlined"
-          ><div v-if="koreanIncome < 0" class="error-text">
-            <span>음수는 입력할 수 없습니다.</span>
-          </div></v-text-field
+          ></v-text-field
         >
         <v-text-field
           v-model="calculatedTax"
@@ -53,9 +50,7 @@
           required
           @input="validateInput"
           variant="underlined"
-          ><div v-if="calculatedTax < 0" class="error-text">
-            <span>음수는 입력할 수 없습니다.</span>
-          </div></v-text-field
+          ></v-text-field
         >
         <v-btn type="submit" color="primary">계산</v-btn>
       </v-form>
