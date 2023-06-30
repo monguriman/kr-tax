@@ -2,6 +2,19 @@
   <div>
     <v-container>
       <h2>외납세 간이 계산기</h2>
+      <div>
+        <h4>준비물</h4>
+        원천징수영수증 <span @click="showModalDownloadGuide = true" style="color: blue; cursor: pointer; text-decoration:underline;">(다운로드 방법)</span>
+      </div>
+      <div>
+        <h4>유의사항</h4>
+        <ul>
+          <li>
+            모든 급여가 원천징수영수증에 포함되어 있지 않다면 실제 공제액은
+            달라질 수 있음.
+          </li>
+        </ul>
+      </div>
       <v-form @submit.prevent="calculateForeignTaxCredit">
         <v-text-field
           v-model="annualIncome"
@@ -49,17 +62,27 @@
       <div v-if="foreignTaxCredit !== null">
         <h2>외국납부세액공제 적용 가능액</h2>
         <p>
-          {{ calculatedTax }} / {{ annualIncome }} *
-          {{ foreignIncome }} = {{ foreignTaxCredit }}
+          {{ calculatedTax }} / {{ annualIncome }} * {{ foreignIncome }} =
+          {{ foreignTaxCredit }}
         </p>
       </div>
+
+      <v-dialog v-model="showModalDownloadGuide" width="500">
+        <DownloadGuideModal />
+      </v-dialog>
+
+
     </v-container>
   </div>
 </template>
+
 <script>
+import DownloadGuideModal from '@/components/DownloadGuideModal.vue';
 export default {
+  components: { DownloadGuideModal },
   data() {
     return {
+      showModalDownloadGuide: false,
       annualIncome: 0,
       foreignIncome: 0,
       calculatedTax: 0,

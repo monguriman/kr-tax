@@ -15,7 +15,7 @@
 
           <v-col>
             <v-sheet min-height="70vh" rounded="lg">
-              <tax-calculator></tax-calculator>
+              <TaxCalculator />
             </v-sheet>
           </v-col>
         </v-row>
