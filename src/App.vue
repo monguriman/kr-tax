@@ -1,7 +1,9 @@
 <template>
   <div>
     <v-app>
-      <LayoutForm />
+      <LayoutForm>
+        <router-view />
+      </LayoutForm>
     </v-app>
   </div>
 </template>
