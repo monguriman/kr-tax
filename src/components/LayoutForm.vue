@@ -15,7 +15,8 @@
 
           <v-col>
             <v-sheet min-height="70vh" rounded="lg">
-              <TaxCalculator />
+              <slot />
+
             </v-sheet>
           </v-col>
         </v-row>
@@ -25,19 +26,13 @@
 </template>
 
 <script>
-import TaxCalculator from "@/components/TaxCalculator.vue";
 export default {
-  components: { TaxCalculator },
+  name: "LayoutForm",
   props: {
-    links: {
+    menus: {
       type: Array,
-      default: () => ["Calculator", "Form Guide"],
+      default: () => ["계산기", "서식 자동작성"],
     },
-  },
-  data() {
-    return {
-      menus: ["계산기", "서식 자동작성"],
-    };
   },
 };
 </script>

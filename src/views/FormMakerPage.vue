@@ -1,13 +1,17 @@
 <template>
     <div>
-        서식 자동작성 페이지입니다.
-        <FormMaker />
+        폼메이커 페이지입니다.
+        <LayoutForm>
+            <FormMaker />
+        </LayoutForm>
+
     </div>
 </template>
 
 <script>
+import LayoutForm from '@/components/LayoutForm.vue';
 import FormMaker from '@/components/FormMaker.vue';
 export default {
-    components: { FormMaker }
+    components: { LayoutForm, FormMaker }
 }
 </script>

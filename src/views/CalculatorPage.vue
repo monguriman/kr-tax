@@ -1,13 +1,25 @@
 <template>
-    <div>
-        서식 자동작성 페이지입니다.
-        <TaxCalculator />
-    </div>
+  <div>
+    계산기 페이지입니다.
+    <LayoutForm :menus="menus">
+
+      <IntroBox />
+      <TaxCalculator />
+      
+    </LayoutForm>
+  </div>
 </template>
 
 <script>
-import TaxCalculator from '@/components/TaxCalculator.vue';
+import LayoutForm from "@/components/LayoutForm.vue";
+import IntroBox from "@/components/IntroBox.vue";
+import TaxCalculator from "@/components/TaxCalculator.vue";
 export default {
-    components: { TaxCalculator }
-}
+  components: { LayoutForm, IntroBox, TaxCalculator },
+  data() {
+    return {
+      menus: ['계산기', '서식 자동작성']
+    }
+  }
+};
 </script>
