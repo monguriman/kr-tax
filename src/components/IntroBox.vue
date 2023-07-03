@@ -3,7 +3,7 @@
   <div>
     <h4>준비물</h4>
     원천징수영수증
-    <span @click="showModalDownloadGuide = true" class="modal-guide-text"
+    <span @click="showDownloadGuideModal = true" class="modal-guide-text"
       >어디서 다운받나요?</span
     >
   </div>
@@ -21,8 +21,11 @@
     </ul>
   </div>
 
-  <v-dialog v-model="showModalDownloadGuide" width="500">
-    <DownloadGuideModal />
+  <v-dialog v-model="showDownloadGuideModal">
+    <div class="modal">
+      <DownloadGuideModal />
+      <button @click="showDownloadGuideModal=false">닫기</button>
+    </div>
   </v-dialog>
 </template>
 
@@ -32,8 +35,10 @@ export default {
   components: { DownloadGuideModal },
   data() {
     return {
-      showModalDownloadGuide: false,
+      showDownloadGuideModal: false,
     };
   },
 };
 </script>
+
+<style scoped></style>

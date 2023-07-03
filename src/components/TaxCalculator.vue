@@ -1,67 +1,78 @@
 <template>
-  <div>
-    <v-container>
-            <v-form @submit.prevent="calculateForeignTaxCredit">
-        <v-text-field
-          v-model="annualIncome"
-          label="연간 총급여"
-          type="number"
-          required
-          @input="validateInput"
-          variant="underlined"
-        ></v-text-field>
-        <v-text-field
-          v-model="foreignIncome"
-          label="연간 총급여 중 국외근로소득"
-          type="number"
-          required
-          @input="validateInput"
-          variant="underlined"
-        ></v-text-field>
-        <v-text-field
-          v-model="koreanIncome"
-          label="연간 총급여 중 국내근로소득 (자동입력)"
-          type="number"
-          required
-          @input="validateInput"
-          variant="underlined"
-          readonly
-        ></v-text-field>
-        <v-text-field
-          v-model="calculatedTax"
-          label="산출세액"
-          type="number"
-          required
-          @input="validateInput"
-          variant="underlined"
-        ></v-text-field>
-        <v-btn type="submit" color="primary">계산</v-btn>
-      </v-form>
-      <div>
-        <h2>외국납부세액공제 적용 가능액</h2>
-        <p v-if="foreignTaxCredit == null">값을 모두 입력하세요.</p>
-        <p v-if="foreignTaxCredit !== null">
-          {{ calculatedTax }} / {{ annualIncome }} * {{ foreignIncome }} =
-          {{ foreignTaxCredit }}
-          <br />한국에서 동일 국외근로소득에 대해 이미 세금을 냈거나 월급에서
-          원천징수되었다면, 최대
-          <span style="font-weight: 900">{{
-            foreignTaxCredit.toLocaleString()
-          }}</span
-          >원 만큼 세금을 환급받을 수 있습니다.
-        </p>
-      </div>
+  <v-container>
+    <v-form @submit.prevent="calculateForeignTaxCredit">
+      <v-text-field
+        v-model="annualIncome"
+        label="연간 총급여"
+        type="number"
+        required
+        @input="validateInput"
+        variant="underlined"
+      >
+        <span
+          class="modal-guide-text"
+          @click="showAnnualIncomeGuideModal = true"
+          >어디서 확인하나요?</span
+        ></v-text-field
+      >
+      <v-text-field
+        v-model="foreignIncome"
+        label="연간 총급여 중 국외근로소득"
+        type="number"
+        required
+        @input="validateInput"
+        variant="underlined"
+      ></v-text-field>
+      <v-text-field
+        v-model="koreanIncome"
+        label="연간 총급여 중 국내근로소득 (자동입력)"
+        type="number"
+        required
+        @input="validateInput"
+        variant="underlined"
+        readonly
+      ></v-text-field>
+      <v-text-field
+        v-model="calculatedTax"
+        label="산출세액"
+        type="number"
+        required
+        @input="validateInput"
+        variant="underlined"
+      ></v-text-field>
+      <v-btn type="submit" color="primary">계산</v-btn>
+    </v-form>
+    <div>
+      <h2>외국납부세액공제 적용 가능액</h2>
+      <p v-if="foreignTaxCredit == null">값을 모두 입력하세요.</p>
+      <p v-if="foreignTaxCredit !== null">
+        {{ calculatedTax }} / {{ annualIncome }} * {{ foreignIncome }} =
+        {{ foreignTaxCredit }}
+        <br />한국에서 동일 국외근로소득에 대해 이미 세금을 냈거나 월급에서
+        원천징수되었다면, 최대
+        <span style="font-weight: 900">{{
+          foreignTaxCredit.toLocaleString()
+        }}</span
+        >원 만큼 세금을 환급받을 수 있습니다.
+      </p>
+    </div>
+  </v-container>
 
-
-    </v-container>
-  </div>
+  <v-dialog v-model="showAnnualIncomeGuideModal">
+    <div class="modal">
+      <AnnualIncomeGuideModal />
+      <button @click="showAnnualIncomeGuideModal = false">닫기</button>
+    </div>
+  </v-dialog>
 </template>
 
 <script>
+import AnnualIncomeGuideModal from "./AnnualIncomeGuideModal.vue";
 export default {
-  components: {  },
+  components: { AnnualIncomeGuideModal },
   data() {
     return {
+      showAnnualIncomeGuideModal: false,
       annualIncome: 0,
       foreignIncome: 0,
       calculatedTax: 0,

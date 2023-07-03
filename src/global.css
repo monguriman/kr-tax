@@ -1,0 +1,11 @@
+.modal-guide-text {
+  color: blue;
+  cursor: pointer;
+  font-size: 0.7em;
+}
+
+.modal {
+  background-color: white;
+  width: 40em;
+  border: solid black 1px;
+}

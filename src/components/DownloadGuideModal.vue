@@ -1,6 +1,6 @@
 <template>
-  <div class="download-guide">
-    [다운로드 가이드]
+  <div>
+    [원천징수영수증 다운 방법]
     <br />
     1.
     <a
@@ -10,8 +10,8 @@
       >홈택스</a
     >
     로그인 <br />
-    <img :src="downloadGuide" alt="downloadGuide" /> <br />2. 조회/발급 > 기타
-    조회 >근로소득 지급명세서 조회 > 사업자 번호 클릭
+    <br />2. 조회/발급 > 기타 조회 >근로소득 지급명세서 조회 > 사업자 번호 클릭
+    <img :src="downloadGuide" alt="downloadGuide" style="width: 100%" />
   </div>
 </template>
 
@@ -28,7 +28,5 @@ export default {
 </script>
 
 <style scoped>
-.download-guide {
-  background-color: white;
-}
+
 </style>
