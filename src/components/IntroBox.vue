@@ -24,7 +24,7 @@
   <v-dialog v-model="showDownloadGuideModal">
     <div class="modal">
       <DownloadGuideModal />
-      <button @click="showDownloadGuideModal=false">닫기</button>
+      <v-btn @click="showDownloadGuideModal=false" color="primary">닫기</v-btn>
     </div>
   </v-dialog>
 </template>

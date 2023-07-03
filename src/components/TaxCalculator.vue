@@ -61,7 +61,9 @@
   <v-dialog v-model="showAnnualIncomeGuideModal">
     <div class="modal">
       <AnnualIncomeGuideModal />
-      <button @click="showAnnualIncomeGuideModal = false">닫기</button>
+      <v-btn @click="showAnnualIncomeGuideModal = false" color="primary">
+        닫기
+      </v-btn>
     </div>
   </v-dialog>
 </template>
