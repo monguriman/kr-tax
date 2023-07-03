@@ -8,4 +8,6 @@
   background-color: white;
   width: 40em;
   border: solid black 1px;
+  padding: 2em;
+  align-self: center;
 }
