@@ -4,6 +4,15 @@
   font-size: 0.7em;
 }
 
+.modal-guide-text-in-input {
+  color:blue;
+  cursor: pointer;
+  font-size: 0.7em;
+  position: absolute;
+  right: 10px;
+}
+
+
 .modal {
   background-color: white;
   width: 40em;

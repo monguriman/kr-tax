@@ -10,9 +10,9 @@
         variant="underlined"
       >
         <span
-          class="modal-guide-text"
+          class="modal-guide-text-in-input"
           @click="showAnnualIncomeGuideModal = true"
-          >어디서 확인하나요?</span
+          >어느 금액을 적나요?</span
         ></v-text-field
       >
       <v-text-field
