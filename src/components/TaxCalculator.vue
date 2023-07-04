@@ -73,9 +73,7 @@
 
   <v-dialog v-model="showForeignIncomeGuideModal">
     <div class="modal">
-      <ForeignIncomeGuideModal>
-        {{ annualIncome }}
-      </ForeignIncomeGuideModal>
+      <ForeignIncomeGuideModal :value="annualIncome" />
       <v-btn @click="showForeignIncomeGuideModal = false" color="primary">
         닫기
       </v-btn>
