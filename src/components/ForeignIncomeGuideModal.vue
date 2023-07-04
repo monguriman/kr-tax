@@ -37,7 +37,11 @@
       />
     </v-form>
     <div>
-      해외근무 일수 | 총 {{ foreignDays }}일 / {{ daysInSelectedYear }}일!!
+      해외근무 일수 | {{ daysInSelectedYear }}일 중 {{ foreignDays }}일
+      <br />
+      국외원천소득 | {{ foreignIncome.toLocaleString() }}원
+      <br />
+      국내원천소득 | {{ (annualIncome - foreignIncome).toLocaleString() }}원
     </div>
   </div>
 </template>
@@ -73,6 +77,9 @@ export default {
     },
     daysInSelectedYear() {
       return moment(String(this.selectedYear)).isLeapYear() ? 366 : 365;
+    },
+    foreignIncome() {
+      return Number(((this.annualIncome * this.foreignDays) / this.daysInSelectedYear).toFixed(0));
     },
   },
 };
