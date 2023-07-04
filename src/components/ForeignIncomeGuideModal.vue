@@ -21,59 +21,47 @@
         label="계산 기준년도"
         v-model="selectedYear"
         :items="['2023', '2022', '2021', '2020', '2019', '2018']"
-        @input="updateDateYear"
+        @input="console.log('년도변경')"
       ></v-combobox>
+
       <v-text-field
-        ref="startDatePicker"
         v-model="startDate"
         :label="`${selectedYear}년의 해외근무 시작일 (${selectedYear}년 이전 시작의 경우, ${selectedYear}-01-01)`"
         required
+        @input="console.log('시작일변경')"
         type="date"
-        @click="openStartDatePicker"
       />
       <v-text-field
-        ref="endDatePicker"
         v-model="endDate"
         :label="`${selectedYear}년의 해외근무 종료일`"
         required
         type="date"
-        @click="openEndDatePicker"
       />
     </v-form>
   </div>
 </template>
-
 <script>
 export default {
   data() {
     return {
       annualIncome: this.value,
-      selectedYear: '2022',
+      selectedYear: 2022,
       startDate: null,
       endDate: null,
-    };
+    }
   },
+  watch: {
+  selectedYear(newVal) {
+    this.startDate = `${newVal}-01-01`
+    this.endDate = `${newVal}-12-31`
+  }
+},
+
   mounted() {
     this.annualIncome = this.value;
   },
   props: ["value"],
-  methods: {
-    updateDateYear() {
-      this.startDate = `${this.selectedYear}-01-01`;
-      this.endDate = `${this.selectedYear}-01-01`;
-    },
-    openStartDatePicker() {
-      this.$nextTick(() => {
-        this.$refs.startDatePicker.$el.querySelector('input').focus();
-      });
-    },
-    openEndDatePicker() {
-      this.$nextTick(() => {
-        this.$refs.endDatePicker.$el.querySelector('input').focus();
-      });
-    },
-  },
+  methods: { },
 };
 </script>
-
 <style scoped></style>
