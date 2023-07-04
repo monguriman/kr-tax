@@ -37,6 +37,9 @@
       />
     </v-form>
     <div>
+      <span>{{ inputError }}</span>
+    </div>
+    <div v-if="!inputError">
       해외근무 일수 | {{ daysInSelectedYear }}일 중 {{ foreignDays }}일
       <br />
       국외원천소득 | {{ foreignIncome.toLocaleString() }}원
@@ -79,7 +82,34 @@ export default {
       return moment(String(this.selectedYear)).isLeapYear() ? 366 : 365;
     },
     foreignIncome() {
-      return Number(((this.annualIncome * this.foreignDays) / this.daysInSelectedYear).toFixed(0));
+      return Number(
+        (
+          (this.annualIncome * this.foreignDays) /
+          this.daysInSelectedYear
+        ).toFixed(0)
+      );
+    },
+    dateInvalid() {
+      const startDateIsValid = moment(
+        this.startDate,
+        "YYYY-MM-DD",
+        true
+      ).isValid();
+      const endDateIsValid = moment(this.endDate, "YYYY-MM-DD", true).isValid();
+      return !startDateIsValid || !endDateIsValid;
+    },
+    inputError() {
+      let errorMsg = "";
+      if (!this.dateInvalid && this.startDate > this.endDate) {
+        errorMsg = "시작일이 종료일보다 빠른지 확인해주세요.";
+      }
+      if (this.annualIncome < 0) {
+        errorMsg += (errorMsg ? " " : "") + "소득은 음수일 수 없습니다.";
+      }
+      if (this.dateInvalid) {
+        errorMsg += (errorMsg ? " " : "") + "올바른 날짜를 입력해주세요.";
+      }
+      return errorMsg;
     },
   },
 };
