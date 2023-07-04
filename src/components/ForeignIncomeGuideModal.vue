@@ -16,10 +16,29 @@
         label="연간 총급여"
         type="number"
         required
-        :value="value"
-
-      >
-      </v-text-field>
+      />
+      <v-combobox
+        label="계산 기준년도"
+        v-model="selectedYear"
+        :items="['2023', '2022', '2021', '2020', '2019', '2018']"
+        @input="updateDateYear"
+      ></v-combobox>
+      <v-text-field
+        ref="startDatePicker"
+        v-model="startDate"
+        :label="`${selectedYear}년의 해외근무 시작일 (${selectedYear}년 이전 시작의 경우, ${selectedYear}-01-01)`"
+        required
+        type="date"
+        @click="openStartDatePicker"
+      />
+      <v-text-field
+        ref="endDatePicker"
+        v-model="endDate"
+        :label="`${selectedYear}년의 해외근무 종료일`"
+        required
+        type="date"
+        @click="openEndDatePicker"
+      />
     </v-form>
   </div>
 </template>
@@ -29,6 +48,9 @@ export default {
   data() {
     return {
       annualIncome: this.value,
+      selectedYear: '2022',
+      startDate: null,
+      endDate: null,
     };
   },
   mounted() {
@@ -36,8 +58,19 @@ export default {
   },
   props: ["value"],
   methods: {
-    validateInput() {
-      // 코드 작성
+    updateDateYear() {
+      this.startDate = `${this.selectedYear}-01-01`;
+      this.endDate = `${this.selectedYear}-01-01`;
+    },
+    openStartDatePicker() {
+      this.$nextTick(() => {
+        this.$refs.startDatePicker.$el.querySelector('input').focus();
+      });
+    },
+    openEndDatePicker() {
+      this.$nextTick(() => {
+        this.$refs.endDatePicker.$el.querySelector('input').focus();
+      });
     },
   },
 };
