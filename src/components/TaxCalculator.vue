@@ -150,9 +150,9 @@ export default {
       showAnnualIncomeGuideModal: false,
       showForeignIncomeGuideModal: false,
       showCalculatedTaxGuideModal: false,
-      annualIncome: 100000,
-      foreignIncome: 50000,
-      calculatedTax: 2000,
+      annualIncome: '',
+      foreignIncome: '',
+      calculatedTax: '',
     };
   },
   computed: {

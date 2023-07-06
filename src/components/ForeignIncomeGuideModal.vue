@@ -10,13 +10,7 @@
     </ul>
     <br />
     입력된 연간 총급여 | {{ Number(value).toLocaleString() }}
-    <v-form>
-      <v-text-field
-        v-model="annualIncome"
-        label="연간 총급여"
-        type="number"
-        required
-      />
+    <v-form class="mt-3">
       <v-combobox
         label="계산 기준년도"
         v-model="selectedYear"
@@ -41,15 +35,16 @@
     <div v-if="!inputError">
       해외근무 일수 | {{ daysInSelectedYear }}일 중 {{ foreignDays }}일
       <br />
-      국외원천소득 | {{ foreignIncome.toLocaleString() }}원
+      국외근로소득 |
+      <span class="emphasis-text">{{ foreignIncome.toLocaleString() }}원</span>
       <br />
-      국내원천소득 | {{ (annualIncome - foreignIncome).toLocaleString() }}원
+      국내근로소득 | {{ (annualIncome - foreignIncome).toLocaleString() }}원
       <br />
       <v-btn
         @click="onSave"
         color="primary"
         class="d-flex align-center justify-center mx-auto"
-        >닫기</v-btn
+        >적용</v-btn
       >
     </div>
   </div>
