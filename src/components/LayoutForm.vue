@@ -14,9 +14,8 @@
           </v-col>
 
           <v-col>
-            <v-sheet min-height="70vh" rounded="lg">
+            <v-sheet min-height="70vh" rounded="lg" class="layout-main">
               <slot />
-
             </v-sheet>
           </v-col>
         </v-row>
@@ -36,3 +35,8 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+.layout-main {
+  padding: 2.2em;
+}</style>
