@@ -22,11 +22,12 @@
         required
         @input="validateInput"
         variant="underlined"
-      ><span
+        ><span
           class="modal-guide-text-in-input"
           @click="showForeignIncomeGuideModal = true"
           >어떻게 계산하나요?</span
-        ></v-text-field>
+        ></v-text-field
+      >
       <v-text-field
         v-model="koreanIncome"
         label="연간 총급여 중 국내근로소득 (자동입력)"
@@ -43,7 +44,12 @@
         required
         @input="validateInput"
         variant="underlined"
-      ></v-text-field>
+        ><span
+          class="modal-guide-text-in-input"
+          @click="showCalculatedTaxGuideModal = true"
+          >어느 금액을 적나요?</span
+        ></v-text-field
+      >
       <v-btn type="submit" color="primary">계산</v-btn>
     </v-form>
     <div>
@@ -80,18 +86,32 @@
     </div>
   </v-dialog>
 
+  <v-dialog v-model="showCalculatedTaxGuideModal">
+    <div class="modal">
+      <CalculatedTaxGuideModal />
+      <v-btn @click="showCalculatedTaxGuideModal = false" color="primary">
+        닫기
+      </v-btn>
+    </div>
+  </v-dialog>
 </template>
 
 <script>
 import AnnualIncomeGuideModal from "./AnnualIncomeGuideModal.vue";
 import ForeignIncomeGuideModal from "./ForeignIncomeGuideModal.vue";
+import CalculatedTaxGuideModal from "./CalculatedTaxGuideModal.vue";
 
 export default {
-  components: { AnnualIncomeGuideModal, ForeignIncomeGuideModal },
+  components: {
+    AnnualIncomeGuideModal,
+    ForeignIncomeGuideModal,
+    CalculatedTaxGuideModal,
+  },
   data() {
     return {
       showAnnualIncomeGuideModal: false,
       showForeignIncomeGuideModal: false,
+      showCalculatedTaxGuideModal: false,
       annualIncome: 0,
       foreignIncome: 0,
       calculatedTax: 0,
