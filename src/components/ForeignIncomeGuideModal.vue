@@ -22,7 +22,6 @@
         v-model="selectedYear"
         :items="['2023', '2022', '2021', '2020', '2019', '2018']"
       ></v-combobox>
-
       <v-text-field
         v-model="startDate"
         :label="`${selectedYear}년의 해외근무 시작일 (${selectedYear}년 이전 시작의 경우, ${selectedYear}-01-01)`"

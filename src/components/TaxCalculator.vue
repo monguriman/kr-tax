@@ -1,12 +1,13 @@
 <template>
   <v-container>
-    <v-form @submit.prevent="calculateForeignTaxCredit">
+    <v-form>
       <v-text-field
         v-model="annualIncome"
         label="연간 총급여"
         type="number"
         required
         @input="validateInput"
+        @click="annualIncome = ''"
         variant="underlined"
       >
         <span
@@ -21,6 +22,7 @@
         type="number"
         required
         @input="validateInput"
+        @click="foreignIncome = ''"
         variant="underlined"
         ><span
           class="modal-guide-text-in-input"
@@ -43,6 +45,7 @@
         type="number"
         required
         @input="validateInput"
+        @click="calculatedTax = ''"
         variant="underlined"
         ><span
           class="modal-guide-text-in-input"
@@ -50,14 +53,19 @@
           >어느 금액을 적나요?</span
         ></v-text-field
       >
-      <v-btn type="submit" color="primary">계산</v-btn>
     </v-form>
     <div>
       <h2>외국납부세액공제 적용 가능액</h2>
       <p v-if="foreignTaxCredit == null">값을 모두 입력하세요.</p>
       <p v-if="foreignTaxCredit !== null">
-        {{ calculatedTax }} / {{ annualIncome }} * {{ foreignIncome }} =
-        {{ foreignTaxCredit }}
+        {{ Number(calculatedTax).toLocaleString() }} * ({{
+          Number(foreignIncome).toLocaleString()
+        }}
+        - {{ deduction(foreignIncome).toLocaleString() }}) / ({{
+          annualIncome
+        }}
+        - {{ deduction(annualIncome).toLocaleString() }}) =
+        {{ foreignTaxCredit.toLocaleString() }}
         <br />한국에서 동일 국외근로소득에 대해 이미 세금을 냈거나 월급에서
         원천징수되었다면, 최대
         <span style="font-weight: 900">{{
@@ -102,6 +110,8 @@ import AnnualIncomeGuideModal from "./AnnualIncomeGuideModal.vue";
 import ForeignIncomeGuideModal from "./ForeignIncomeGuideModal.vue";
 import CalculatedTaxGuideModal from "./CalculatedTaxGuideModal.vue";
 
+import { deduction } from "../util/util";
+
 export default {
   components: {
     AnnualIncomeGuideModal,
@@ -116,7 +126,6 @@ export default {
       annualIncome: 0,
       foreignIncome: 0,
       calculatedTax: 0,
-      foreignTaxCredit: null,
     };
   },
   computed: {
@@ -128,17 +137,17 @@ export default {
         this.foreignIncome = this.annualIncome - value;
       },
     },
+    foreignTaxCredit() {
+    if (this.annualIncome && this.foreignIncome && this.calculatedTax) {
+      const foreignTaxCredit =
+        this.calculatedTax * (this.foreignIncome - deduction(this.foreignIncome)) / (this.annualIncome - deduction(this.annualIncome));
+      return foreignTaxCredit.toFixed(0);
+    } else {
+      return null;
+    }
+  },
   },
   methods: {
-    calculateForeignTaxCredit() {
-      if (this.annualIncome && this.foreignIncome && this.calculatedTax) {
-        const foreignTaxCredit =
-          (this.calculatedTax / this.annualIncome) * this.foreignIncome;
-        this.foreignTaxCredit = foreignTaxCredit.toFixed(0);
-      } else {
-        this.foreignTaxCredit = null;
-      }
-    },
     validateInput(e) {
       console.log(e);
       const regex = /^[0-9]*$/;
@@ -151,6 +160,7 @@ export default {
     onForeignIncomeUpdated(value) {
       this.foreignIncome = value;
     },
+    deduction: deduction,
   },
 };
 </script>
