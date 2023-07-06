@@ -9,7 +9,7 @@
       </li>
     </ul>
     <br />
-    입력된 연간 총급여 | {{ value }}
+    입력된 연간 총급여 | {{ Number(value).toLocaleString() }}
     <v-form>
       <v-text-field
         v-model="annualIncome"
@@ -45,7 +45,8 @@
       국외원천소득 | {{ foreignIncome.toLocaleString() }}원
       <br />
       국내원천소득 | {{ (annualIncome - foreignIncome).toLocaleString() }}원
-      
+      <br />
+      <v-btn @click="onSave" color="primary">닫기</v-btn>
     </div>
   </div>
 </template>
@@ -70,7 +71,12 @@ export default {
     this.annualIncome = this.value;
   },
   props: ["value"],
-  methods: {},
+  methods: {
+    onSave() {
+      this.$emit("save", this.foreignIncome);
+      this.$emit("close");
+    },
+  },
   computed: {
     foreignDays() {
       const start = new Date(this.startDate);
@@ -110,8 +116,9 @@ export default {
       if (this.dateInvalid) {
         errorMsg += (errorMsg ? " " : "") + "올바른 날짜를 입력해주세요.";
       }
-      if ( this.startDate.slice(0,4) != this.endDate.slice(0,4) ) {
-        errorMsg += (errorMsg ? " " : "") + "시작년도와 종료년도는 같아야 합니다.";
+      if (this.startDate.slice(0, 4) != this.endDate.slice(0, 4)) {
+        errorMsg +=
+          (errorMsg ? " " : "") + "시작년도와 종료년도는 같아야 합니다.";
       }
       return errorMsg;
     },

@@ -79,10 +79,11 @@
 
   <v-dialog v-model="showForeignIncomeGuideModal">
     <div class="modal">
-      <ForeignIncomeGuideModal :value="annualIncome" />
-      <v-btn @click="showForeignIncomeGuideModal = false" color="primary">
-        닫기
-      </v-btn>
+      <ForeignIncomeGuideModal
+        :value="annualIncome"
+        @save="onForeignIncomeUpdated"
+        @close="showForeignIncomeGuideModal = false"
+      />
     </div>
   </v-dialog>
 
@@ -144,8 +145,11 @@ export default {
       if (!regex.test(e.target.value)) {
         e.target.value = e.target.value.slice(0, -1);
       } else {
-        e.target.value = parseInt(e.target.value).toString(); // 숫자로 변환하여 다시 문자열로 반환합니다.
+        e.target.value = parseInt(e.target.value).toString();
       }
+    },
+    onForeignIncomeUpdated(value) {
+      this.foreignIncome = value;
     },
   },
 };
