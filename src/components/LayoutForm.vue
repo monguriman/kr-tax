@@ -30,7 +30,7 @@ export default {
   props: {
     menus: {
       type: Array,
-      default: () => ["계산기", "서식 자동작성"],
+      default: () => ["계산기"],
     },
   },
 };

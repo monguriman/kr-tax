@@ -1,22 +1,41 @@
 <template>
   <h2>외국납부세액공제 간이 계산기</h2>
-  <div>
+
+  <div style="margin-top: 2em">
+    <h4>외국납부세액공제란?</h4>
+    아래 사항에 <span style="font-weight: 900;">모두</span> 해당한다면,
+    외국납부세액공제를 통해 환급을 받을 수 있어요.
+
+    <ul type="circle" style="padding-left: 2em; margin: 1em 0 1em 0">
+      <li>한국과 외국에서 동일 소득에 대해 세금을 중복으로 냈어요.</li>
+      <li>
+        외국에서 일하고 받은 소득을 한국에서 신고했어요. <br /><span
+          style="font-size: 0.8em"
+          >(예를 들어, 내가 외국에서 일하는 동안 한국회사에서 세금을
+          원천징수하고 연말정산했어요.)</span
+        >
+      </li>
+    </ul>
+  </div>
+
+  <div style="margin-top: 2em">
     <h4>준비물</h4>
     원천징수영수증
     <span @click="showDownloadGuideModal = true" class="modal-guide-text"
       >어디서 다운받나요?</span
     >
   </div>
-  <div>
+
+  <div style="margin-top: 2em">
     <h4>유의사항</h4>
-    <ul style="padding-left: 2em;">
+    <ul style="padding-left: 2em">
       <li>
-        모든 급여가 원천징수영수증에 포함되어 있지 않다면 실제 공제액은 달라질
-        수 있음.
+        모든 급여가 원천징수영수증에 포함되어 있지 않다면 실제 공제액은
+        달라져요.
       </li>
       <li>
-        원천징수영수증에 없는 근로소득(해외지급액)은 별도의 종합소득세 신고를
-        통해 신고하여야 할 수 있음.
+        원천징수영수증에 없는 근로소득(해외지급액 등)은 종합소득세 신고를 통해
+        신고해야 할 수 있어요.
       </li>
     </ul>
   </div>
@@ -24,7 +43,13 @@
   <v-dialog v-model="showDownloadGuideModal">
     <div class="modal">
       <DownloadGuideModal />
-      <v-btn @click="showDownloadGuideModal=false" color="primary">닫기</v-btn>
+      <v-btn
+        @click="showDownloadGuideModal = false"
+        flat
+        color="deep-purple-accent-3"
+        style="align-items: center;"
+        >닫기</v-btn
+      >
     </div>
   </v-dialog>
 </template>

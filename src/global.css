@@ -1,26 +1,28 @@
 body {
-  font-family: 'Noto Sans KR', sans-serif;
+  font-family: "Noto Sans KR", sans-serif;
 }
 
 .modal-guide-text {
-  color: blue;
+  color: #651FFF;
   cursor: pointer;
   font-size: 0.7em;
 }
 
 .modal-guide-text-in-input {
-  color:blue;
+  color: #651FFF;
   cursor: pointer;
   font-size: 0.7em;
   position: absolute;
   right: 10px;
 }
 
-
 .modal {
   background-color: white;
   width: 40em;
+  max-height: 80vh;
   border: solid black 1px;
-  padding: 2em;
+  padding: 1.8em;
   align-self: center;
+  overflow-y: auto;
+  overflow-x: hidden;
 }

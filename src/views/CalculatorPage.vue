@@ -1,6 +1,5 @@
 <template>
   <div>
-    계산기 페이지입니다.
     <LayoutForm :menus="menus">
 
       <IntroBox />
@@ -18,7 +17,7 @@ export default {
   components: { LayoutForm, IntroBox, TaxCalculator },
   data() {
     return {
-      menus: ['계산기', '서식 자동작성']
+      menus: ['계산기']
     }
   }
 };
