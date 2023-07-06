@@ -3,17 +3,19 @@ body {
 }
 
 .modal-guide-text {
-  color: #651FFF;
+  color: #651fff;
   cursor: pointer;
   font-size: 0.7em;
+  font-weight: 700;
 }
 
 .modal-guide-text-in-input {
-  color: #651FFF;
+  color: #651fff;
   cursor: pointer;
   font-size: 0.7em;
   position: absolute;
   right: 10px;
+  font-weight: 700;
 }
 
 .modal {
@@ -25,4 +27,15 @@ body {
   align-self: center;
   overflow-y: auto;
   overflow-x: hidden;
+}
+
+.modal .v-btn {
+  margin-top: 1em;
+  width: 95%;
+  border-radius: 30px;
+}
+
+.emphasis-text {
+  color: #651fff;
+  font-weight: 900;
 }

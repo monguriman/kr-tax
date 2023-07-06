@@ -45,7 +45,12 @@
       <br />
       국내원천소득 | {{ (annualIncome - foreignIncome).toLocaleString() }}원
       <br />
-      <v-btn @click="onSave" color="primary">닫기</v-btn>
+      <v-btn
+        @click="onSave"
+        color="primary"
+        class="d-flex align-center justify-center mx-auto"
+        >닫기</v-btn
+      >
     </div>
   </div>
 </template>

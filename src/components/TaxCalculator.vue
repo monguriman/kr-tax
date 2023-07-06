@@ -105,7 +105,8 @@
   <v-dialog v-model="showAnnualIncomeGuideModal">
     <div class="modal">
       <AnnualIncomeGuideModal />
-      <v-btn @click="showAnnualIncomeGuideModal = false" color="primary">
+      <v-btn @click="showAnnualIncomeGuideModal = false" color="primary" class="d-flex align-center justify-center mx-auto"
+      >
         닫기
       </v-btn>
     </div>
@@ -124,7 +125,7 @@
   <v-dialog v-model="showCalculatedTaxGuideModal">
     <div class="modal">
       <CalculatedTaxGuideModal />
-      <v-btn @click="showCalculatedTaxGuideModal = false" color="primary">
+      <v-btn @click="showCalculatedTaxGuideModal = false" color="primary" class="d-flex align-center justify-center mx-auto">
         닫기
       </v-btn>
     </div>

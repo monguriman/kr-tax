@@ -3,10 +3,10 @@
 
   <div style="margin-top: 2em">
     <h4>외국납부세액공제란?</h4>
-    아래 사항에 <span style="font-weight: 900;">모두</span> 해당한다면,
-    외국납부세액공제를 통해 환급을 받을 수 있어요.
+    아래 사항에 모두 해당한다면,
+    외국납부세액공제를 통해 <span class="emphasis-text">세금 환급을 받을 수 있어요.</span>
 
-    <ul type="circle" style="padding-left: 2em; margin: 1em 0 1em 0">
+    <ul style="padding-left: 2em; margin: 1em 0 1em 0">
       <li>한국과 외국에서 동일 소득에 대해 세금을 중복으로 냈어요.</li>
       <li>
         외국에서 일하고 받은 소득을 한국에서 신고했어요. <br /><span
@@ -44,12 +44,12 @@
     <div class="modal">
       <DownloadGuideModal />
       <v-btn
-        @click="showDownloadGuideModal = false"
-        flat
-        color="deep-purple-accent-3"
-        style="align-items: center;"
-        >닫기</v-btn
-      >
+      @click="showDownloadGuideModal = false"
+      flat
+      color="deep-purple-accent-3"
+      class="d-flex align-center justify-center mx-auto"
+      >닫기</v-btn
+    >
     </div>
   </v-dialog>
 </template>

@@ -8,12 +8,13 @@
         href="https://www.hometax.go.kr/websquare/websquare.wq?w2xPath=/ui/pp/index.xml&tmIdx=0&tm2lIdx=&tm3lIdx="
         target="_blank"
         rel="noopener noreferrer"
+        class="emphasis-text"
         >홈택스</a
       >
       로그인
     </div>
     <div class="steps">
-      2. 조회/발급 > 기타 조회 >근로소득 지급명세서 조회
+      2. 조회/발급 > 기타 조회 > 근로소득 지급명세서 조회
       <img
         :src="downloadGuide"
         alt="downloadGuide"
