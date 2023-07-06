@@ -45,6 +45,7 @@
       국외원천소득 | {{ foreignIncome.toLocaleString() }}원
       <br />
       국내원천소득 | {{ (annualIncome - foreignIncome).toLocaleString() }}원
+      
     </div>
   </div>
 </template>
@@ -108,6 +109,9 @@ export default {
       }
       if (this.dateInvalid) {
         errorMsg += (errorMsg ? " " : "") + "올바른 날짜를 입력해주세요.";
+      }
+      if ( this.startDate.slice(0,4) != this.endDate.slice(0,4) ) {
+        errorMsg += (errorMsg ? " " : "") + "시작년도와 종료년도는 같아야 합니다.";
       }
       return errorMsg;
     },
