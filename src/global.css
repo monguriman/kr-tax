@@ -16,6 +16,7 @@ body {
   position: absolute;
   right: 10px;
   font-weight: 700;
+  z-index: 1;
 }
 
 .modal {
@@ -26,6 +27,12 @@ body {
   align-self: center;
   overflow-y: auto;
   overflow-x: hidden;
+}
+
+.close-button {
+  position: absolute;
+  left: 560px;
+  top: -10px;
 }
 
 /* 웹킷 기반 브라우저에서 스크롤바 스타일 변경 */

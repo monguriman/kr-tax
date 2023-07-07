@@ -58,11 +58,11 @@
       <h2>외국납부세액공제 적용 가능액</h2>
       <p v-if="foreignTaxCredit == null">값을 모두 입력하세요.</p>
       <div v-if="foreignTaxCredit !== null">
-        <v-container class="calc-result" style="width: 35em;">
+        <v-container class="calc-result" style="width: 35em">
           <v-row no-gutters>
             <v-col cols="12" sm="3" align-self="center">
-              <v-sheet class="ma-2 pa-2 text-center" >
-                <div style="font-size: 0.6em;">결과</div>
+              <v-sheet class="ma-2 pa-2 text-center">
+                <div style="font-size: 0.6em">결과</div>
                 {{ foreignTaxCredit.toLocaleString() }}원
               </v-sheet>
             </v-col>
@@ -71,7 +71,7 @@
             </v-col>
             <v-col cols="12" sm="3" align-self="center">
               <v-sheet class="ma-2 pa-2 text-center">
-                <div style="font-size: 0.6em;">산출세액</div>
+                <div style="font-size: 0.6em">산출세액</div>
                 {{ Number(calculatedTax).toLocaleString() }}
               </v-sheet>
             </v-col>
@@ -80,13 +80,13 @@
             </v-col>
             <v-col cols="12" sm="4" align-self="center">
               <v-sheet class="ma-2 pa-2 text-center">
-                <div style="font-size: 0.6em;">국외근로소득 - 근로소득공제</div>
+                <div style="font-size: 0.6em">국외근로소득 - 근로소득공제</div>
                 ({{ Number(foreignIncome).toLocaleString() }} -
                 {{ deduction(foreignIncome).toLocaleString() }})
                 <hr />
                 ({{ Number(annualIncome).toLocaleString() }} -
                 {{ deduction(annualIncome).toLocaleString() }})
-                <div style="font-size: 0.6em;">국내근로소득 - 근로소득공제</div>
+                <div style="font-size: 0.6em">국내근로소득 - 근로소득공제</div>
               </v-sheet>
             </v-col>
           </v-row>
@@ -104,8 +104,16 @@
 
   <v-dialog v-model="showAnnualIncomeGuideModal">
     <div class="modal">
+      <v-icon
+        icon="mdi-close"
+        class="close-button"
+        @click="showAnnualIncomeGuideModal = false"
+      />
       <AnnualIncomeGuideModal />
-      <v-btn @click="showAnnualIncomeGuideModal = false" color="primary" class="d-flex align-center justify-center mx-auto"
+      <v-btn
+        @click="showAnnualIncomeGuideModal = false"
+        color="primary"
+        class="d-flex align-center justify-center mx-auto"
       >
         닫기
       </v-btn>
@@ -114,6 +122,11 @@
 
   <v-dialog v-model="showForeignIncomeGuideModal">
     <div class="modal">
+      <v-icon
+        icon="mdi-close"
+        class="close-button"
+        @click="showForeignIncomeGuideModal = false"
+      />
       <ForeignIncomeGuideModal
         :value="annualIncome"
         @save="onForeignIncomeUpdated"
@@ -123,9 +136,18 @@
   </v-dialog>
 
   <v-dialog v-model="showCalculatedTaxGuideModal">
-    <div class="modal">
+    <div class="modal">      <v-icon
+        icon="mdi-close"
+        class="close-button"
+        @click="showCalculatedTaxGuideModal = false"
+      />
+
       <CalculatedTaxGuideModal />
-      <v-btn @click="showCalculatedTaxGuideModal = false" color="primary" class="d-flex align-center justify-center mx-auto">
+      <v-btn
+        @click="showCalculatedTaxGuideModal = false"
+        color="primary"
+        class="d-flex align-center justify-center mx-auto"
+      >
         닫기
       </v-btn>
     </div>
@@ -150,9 +172,9 @@ export default {
       showAnnualIncomeGuideModal: false,
       showForeignIncomeGuideModal: false,
       showCalculatedTaxGuideModal: false,
-      annualIncome: '',
-      foreignIncome: '',
-      calculatedTax: '',
+      annualIncome: "",
+      foreignIncome: "",
+      calculatedTax: "",
     };
   },
   computed: {
@@ -203,5 +225,4 @@ export default {
   right: 0;
   top: 0;
 }
-
 </style>
