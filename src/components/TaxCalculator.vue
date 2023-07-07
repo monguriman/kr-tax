@@ -56,8 +56,9 @@
     </v-form>
     <div>
       <h2>외국납부세액공제 적용 가능액</h2>
-      <p v-if="foreignTaxCredit == null">값을 모두 입력하세요.</p>
-      <div v-if="foreignTaxCredit !== null">
+      <p v-if="foreignTaxCredit == null">값을 모두 입력하세요. <span>{{ inputError }}</span></p>
+      
+      <div v-if="foreignTaxCredit !== null && !inputError">
         <v-container class="calc-result" style="width: 35em">
           <v-row no-gutters>
             <v-col cols="12" sm="3" align-self="center">
@@ -136,7 +137,8 @@
   </v-dialog>
 
   <v-dialog v-model="showCalculatedTaxGuideModal">
-    <div class="modal">      <v-icon
+    <div class="modal">
+      <v-icon
         icon="mdi-close"
         class="close-button"
         @click="showCalculatedTaxGuideModal = false"
@@ -197,10 +199,24 @@ export default {
         return null;
       }
     },
+    inputError() {
+      let errorMsg = "";
+      if (
+        this.annualIncome < 0 ||
+        this.foreignIncome < 0 ||
+        this.calculatedTax < 0 ||
+        this.koreanIncome < 0
+      ) {
+        errorMsg +=
+          (errorMsg ? " " : "") +
+          "국외근로소득은 연간 총급여보다 작아야 합니다.";
+      }
+
+      return errorMsg;
+    },
   },
   methods: {
     validateInput(e) {
-      console.log(e);
       const regex = /^[0-9]*$/;
       if (!regex.test(e.target.value)) {
         e.target.value = e.target.value.slice(0, -1);
