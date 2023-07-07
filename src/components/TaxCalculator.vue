@@ -47,7 +47,6 @@
         type="text"
         required
         @input="validateInput('calculatedTax')"
-
         variant="underlined"
         ><span
           class="modal-guide-text-in-input"
@@ -60,8 +59,14 @@
       <h2>외국납부세액공제 적용 가능액</h2>
       <hr class="hr-under-title" />
       <p v-if="foreignTaxCredit == null">
-        값을 모두 입력하세요. <span>{{ inputError }}</span>
+        값을 모두 입력하세요. 
       </p>
+      <p v-if="inputError"><v-icon
+          icon="mdi-alert"
+          class="icon"
+          color="yellow-darken-3"
+          size="small"
+        />{{ inputError }}</p>
 
       <div v-if="foreignTaxCredit !== null && !inputError">
         <v-container style="width: 40em">
@@ -90,10 +95,22 @@
               <v-sheet class="ma-2 pa-2 text-center">
                 <div style="font-size: 0.6em">국외근로소득 - 근로소득공제</div>
                 ({{ foreignIncome.toLocaleString() }} -
-                {{ deduction(isNaN(this.foreignIncome)? parseFloat(this.foreignIncome.replace(/,/g, "")) : this.foreignIncome).toLocaleString() }})
+                {{
+                  deduction(
+                    isNaN(this.foreignIncome)
+                      ? parseFloat(this.foreignIncome.replace(/,/g, ""))
+                      : this.foreignIncome
+                  ).toLocaleString()
+                }})
                 <hr />
                 ({{ annualIncome.toLocaleString() }} -
-                {{ deduction(isNaN(this.annualIncome)? parseFloat(this.annualIncome.replace(/,/g, "")) : this.annualIncome).toLocaleString() }})
+                {{
+                  deduction(
+                    isNaN(this.annualIncome)
+                      ? parseFloat(this.annualIncome.replace(/,/g, ""))
+                      : this.annualIncome
+                  ).toLocaleString()
+                }})
                 <div style="font-size: 0.6em">국내근로소득 - 근로소득공제</div>
               </v-sheet>
             </v-col>
@@ -187,26 +204,46 @@ export default {
   },
   computed: {
     koreanIncome: {
-  get() {
-    const annualIncomeParsed = this.annualIncome.replace(/,/g, "") !== "" ? parseFloat(this.annualIncome.replace(/,/g, "")) : 0;
-    const foreignIncomeParsed = isNaN(this.foreignIncome) ? (this.foreignIncome.replace(/,/g, "") !== "" ? parseFloat(this.foreignIncome.replace(/,/g, "")) : 0) : this.foreignIncome;
+      get() {
+        const annualIncomeParsed =
+          this.annualIncome.replace(/,/g, "") !== ""
+            ? parseFloat(this.annualIncome.replace(/,/g, ""))
+            : 0;
+        const foreignIncomeParsed = isNaN(this.foreignIncome)
+          ? this.foreignIncome.replace(/,/g, "") !== ""
+            ? parseFloat(this.foreignIncome.replace(/,/g, ""))
+            : 0
+          : this.foreignIncome;
 
-    return annualIncomeParsed - foreignIncomeParsed;
-  },
-  set(value) {
-    this.foreignIncome = parseFloat(this.annualIncome.replace(/,/g, "")) - value;
-  },
-},
+        return annualIncomeParsed - foreignIncomeParsed;
+      },
+      set(value) {
+        this.foreignIncome =
+          parseFloat(this.annualIncome.replace(/,/g, "")) - value;
+      },
+    },
 
     foreignTaxCredit() {
       if (this.annualIncome && this.foreignIncome && this.calculatedTax) {
         const annualIncome = parseFloat(this.annualIncome.replace(/,/g, ""));
-        const foreignIncome = isNaN(this.foreignIncome)? parseFloat(this.foreignIncome.replace(/,/g, "")) : this.foreignIncome
-        const calculatedTax = parseFloat(this.calculatedTax.replace(/,/g, ""))
+        const foreignIncome = isNaN(this.foreignIncome)
+          ? parseFloat(this.foreignIncome.replace(/,/g, ""))
+          : this.foreignIncome;
+        const calculatedTax = parseFloat(this.calculatedTax.replace(/,/g, ""));
         const foreignTaxCredit =
           (calculatedTax *
-            (foreignIncome - deduction(isNaN(this.foreignIncome)? parseFloat(this.foreignIncome.replace(/,/g, "")) : this.foreignIncome))) /
-          (annualIncome - deduction(isNaN(this.annualIncome)? parseFloat(this.annualIncome.replace(/,/g, "")) : this.annualIncome));
+            (foreignIncome -
+              deduction(
+                isNaN(this.foreignIncome)
+                  ? parseFloat(this.foreignIncome.replace(/,/g, ""))
+                  : this.foreignIncome
+              ))) /
+          (annualIncome -
+            deduction(
+              isNaN(this.annualIncome)
+                ? parseFloat(this.annualIncome.replace(/,/g, ""))
+                : this.annualIncome
+            ));
         return Number(foreignTaxCredit.toFixed(0));
       } else {
         return null;
