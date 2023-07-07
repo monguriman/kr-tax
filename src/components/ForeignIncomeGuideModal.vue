@@ -4,15 +4,13 @@
     <hr class="hr-under-title" />
     <ul style="padding-left: 2em; margin: 1em 0 1em 0">
       <li style="margin-bottom: 7px">
-        국외에서 일하고 받은 소득은 국외근로소득입니다.
+        연간 총급여 중, 국외에서 일하고 받은 소득은 국외근로소득입니다.
       </li>
       <li>
         아래에 기준년도의 국외근무기간을 입력하면 총 급여를 기준으로
         국외근로소득을 계산해 볼 수 있습니다.
       </li>
     </ul>
-    <br />
-    입력된 연간 총급여 | {{ Number(value).toLocaleString() }}
     <v-form class="mt-3">
       <v-combobox
         label="계산 기준년도"
@@ -36,22 +34,86 @@
       />
     </v-form>
     <div>
-      <span>{{ inputError }}</span>
+      <span v-if="inputError"><v-icon icon='mdi-alert' class="icon" color="yellow-darken-3" size="small"/>{{ inputError }}</span>
     </div>
     <div v-if="!inputError">
-      해외근무 일수 | {{ daysInSelectedYear }}일 중 {{ foreignDays }}일
-      <br />
-      국외근로소득 |
-      <span class="emphasis-text">{{ foreignIncome.toLocaleString() }}원</span>
-      <br />
-      국내근로소득 | {{ (annualIncome - foreignIncome).toLocaleString() }}원
-      <br />
+      <table>
+        <tr>
+          <td>
+            <v-icon
+              icon="mdi-numeric-1-circle-outline"
+              class="number-icon"
+              size="small"
+            />입력된 총급여
+          </td>
+          <td>{{ Number(value).toLocaleString() }}</td>
+        </tr>
+        <tr>
+          <td>
+            <v-icon
+              icon="mdi-numeric-2-circle-outline"
+              class="number-icon"
+              size="small"
+            />해외근무 일수
+          </td>
+          <td>{{ foreignDays }} / {{ daysInSelectedYear }}</td>
+        </tr>
+        <tr>
+          <td>
+            <v-icon
+              icon="mdi-numeric-3-circle-outline"
+              class="number-icon"
+              size="small"
+            />국외근로소득 <v-icon
+              icon="mdi-numeric-1-circle-outline"
+              class="number-icon"
+              size="x-small"
+            /><v-icon
+              icon="mdi-close"
+              class="number-icon"
+              size="x-small"
+            /><v-icon
+              icon="mdi-numeric-2-circle-outline"
+              class="number-icon"
+              size="x-small"
+            />
+          </td>
+          <td>
+            <span class="emphasis-text"
+              >{{ foreignIncome.toLocaleString() }}원</span
+            >
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <v-icon
+              icon="mdi-numeric-4-circle-outline"
+              class="number-icon"
+              size="small"
+            />국내근로소득 <v-icon
+              icon="mdi-numeric-1-circle-outline"
+              class="number-icon"
+              size="x-small"
+            /><v-icon
+              icon="mdi-minus"
+              class="number-icon"
+              size="x-small"
+            /><v-icon
+              icon="mdi-numeric-2-circle-outline"
+              class="number-icon"
+              size="x-small"
+            />
+          </td>
+          <td>{{ (annualIncome - foreignIncome).toLocaleString() }}원</td>
+        </tr>
+      </table>
       <v-btn
         @click="onSave"
         color="primary"
         class="d-flex align-center justify-center mx-auto"
-        >적용</v-btn
       >
+        적용
+      </v-btn>
     </div>
   </div>
 </template>
@@ -122,6 +184,8 @@ export default {
         errorMsg += (errorMsg ? " " : "") + "올바른 날짜를 입력해주세요.";
       }
       if (this.startDate.slice(0, 4) != this.endDate.slice(0, 4)) {
+        console.log(this.startDate.slice(0, 4));
+        console.log(this.endDate.slice(0, 4));
         errorMsg +=
           (errorMsg ? " " : "") + "시작년도와 종료년도는 같아야 합니다.";
       }

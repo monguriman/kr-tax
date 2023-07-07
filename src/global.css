@@ -38,7 +38,7 @@ body {
 
 .modal-title {
   margin-bottom: 0.4em;
-  color: #651FFF;
+  color: #651fff;
 }
 
 /* 웹킷 기반 브라우저에서 스크롤바 스타일 변경 */
@@ -76,12 +76,17 @@ body {
 }
 
 .icon {
-  color: #7C4DFF;
+  color: #7c4dff;
   margin: 0.2em 0.4em 0.35em 0.1em;
 }
 
+.number-icon {
+  color: #7c4dff;
+  margin: 1px;
+}
+
 .hr-under-title {
-  border: 3px solid #7C4DFF;
+  border: 3px solid #7c4dff;
   margin: 20px 0 20px 0;
   border-radius: 10px;
   width: 10%;
@@ -95,4 +100,16 @@ body {
 
 .no-spinners {
   -moz-appearance: textfield;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td {
+  border: 1px solid #cccccc;
+  padding: 8px;
+  text-align: left;
+  vertical-align: middle;
 }

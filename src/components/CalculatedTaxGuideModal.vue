@@ -2,7 +2,7 @@
   <div>
     <h3 class="modal-title">산출세액 입력</h3>
     <hr class="hr-under-title" />
-    원천징수영수증 2페이지의 (50)산출세액 금액을 입력하세요.
+    원천징수영수증 2 페이지의 (50)산출세액 금액을 입력하세요.
     <img
       :src="calculatedTaxGuide"
       alt="calculatedTaxGuide"
