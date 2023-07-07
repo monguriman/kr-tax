@@ -34,7 +34,14 @@
       />
     </v-form>
     <div>
-      <span v-if="inputError"><v-icon icon='mdi-alert' class="icon" color="yellow-darken-3" size="small"/>{{ inputError }}</span>
+      <span v-if="inputError"
+        ><v-icon
+          icon="mdi-alert"
+          class="icon"
+          color="yellow-darken-3"
+          size="small"
+        />{{ inputError }}</span
+      >
     </div>
     <div v-if="!inputError">
       <table>
@@ -46,7 +53,9 @@
               size="small"
             />입력된 총급여
           </td>
-          <td>{{ Number(value).toLocaleString() }}</td>
+          <td style="text-align: right">
+            {{ Number(value).toLocaleString() }}
+          </td>
         </tr>
         <tr>
           <td>
@@ -56,7 +65,9 @@
               size="small"
             />해외근무 일수
           </td>
-          <td>{{ foreignDays }} / {{ daysInSelectedYear }}</td>
+          <td style="text-align: right">
+            {{ foreignDays }} / {{ daysInSelectedYear }}
+          </td>
         </tr>
         <tr>
           <td>
@@ -64,7 +75,8 @@
               icon="mdi-numeric-3-circle-outline"
               class="number-icon"
               size="small"
-            />국외근로소득 <v-icon
+            />국외근로소득
+            <v-icon
               icon="mdi-numeric-1-circle-outline"
               class="number-icon"
               size="x-small"
@@ -78,10 +90,10 @@
               size="x-small"
             />
           </td>
-          <td>
-            <span class="emphasis-text"
-              >{{ foreignIncome.toLocaleString() }}원</span
-            >
+          <td style="text-align: right">
+            <span class="emphasis-text">{{
+              foreignIncome.toLocaleString()
+            }}</span>
           </td>
         </tr>
         <tr>
@@ -90,7 +102,8 @@
               icon="mdi-numeric-4-circle-outline"
               class="number-icon"
               size="small"
-            />국내근로소득 <v-icon
+            />국내근로소득
+            <v-icon
               icon="mdi-numeric-1-circle-outline"
               class="number-icon"
               size="x-small"
@@ -99,12 +112,14 @@
               class="number-icon"
               size="x-small"
             /><v-icon
-              icon="mdi-numeric-2-circle-outline"
+              icon="mdi-numeric-3-circle-outline"
               class="number-icon"
               size="x-small"
             />
           </td>
-          <td>{{ (annualIncome - foreignIncome).toLocaleString() }}원</td>
+          <td style="text-align: right">
+            {{ (annualIncome - foreignIncome).toLocaleString() }}
+          </td>
         </tr>
       </table>
       <v-btn
