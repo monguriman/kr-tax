@@ -2,10 +2,9 @@
   <h2>외국납부세액공제 간이 계산기</h2>
 
   <div style="margin-top: 2em">
-    <h4>외국납부세액공제란?</h4>
+    <h4>외국납부세액공제란?</h4><v-icon icon="mdi-plus" color="red"></v-icon>
     아래 사항에 모두 해당한다면,
-    외국납부세액공제를 통해 <span class="emphasis-text">세금 환급을 받을 수 있어요.</span>
-
+    외국납부세액공제를 통해 <span>세금 환급을 받을 수 있어요.</span>
     <ul style="padding-left: 2em; margin: 1em 0 1em 0">
       <li>한국과 외국에서 동일 소득에 대해 세금을 중복으로 냈어요.</li>
       <li>

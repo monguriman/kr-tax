@@ -19,14 +19,29 @@ body {
 }
 
 .modal {
-  background-color: white;
+  background-color: #faf7ff;
   width: 40em;
   max-height: 80vh;
-  border: solid black 1px;
   padding: 1.8em;
   align-self: center;
   overflow-y: auto;
   overflow-x: hidden;
+}
+
+/* 웹킷 기반 브라우저에서 스크롤바 스타일 변경 */
+.modal::-webkit-scrollbar {
+  width: 8px;
+}
+
+.modal::-webkit-scrollbar-thumb {
+  background-color: #D1C4E9;
+  border-radius: 4px;
+}
+
+/* 상하 버튼 제거 */
+.modal::-webkit-scrollbar-button {
+  width: 0;
+  height: 0;
 }
 
 .modal .v-btn {
