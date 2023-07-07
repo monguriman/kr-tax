@@ -1,8 +1,11 @@
 <template>
   <div>
     <h3 class="modal-title">국외근로소득 입력</h3>
-    <ul style="padding-left: 2em; margin: 1em 0 1em 0;">
-      <li style="margin-bottom: 7px;">국외에서 일하고 받은 소득은 국외근로소득입니다.</li>
+    <hr class="hr-under-title" />
+    <ul style="padding-left: 2em; margin: 1em 0 1em 0">
+      <li style="margin-bottom: 7px">
+        국외에서 일하고 받은 소득은 국외근로소득입니다.
+      </li>
       <li>
         아래에 기준년도의 국외근무기간을 입력하면 총 급여를 기준으로
         국외근로소득을 계산해 볼 수 있습니다.

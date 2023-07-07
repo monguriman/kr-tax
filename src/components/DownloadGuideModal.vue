@@ -1,6 +1,7 @@
 <template>
   <div>
     <h3 class="modal-title">원천징수영수증 다운로드 방법</h3>
+<hr class="hr-under-title" />
 
     <div class="steps">
       1.

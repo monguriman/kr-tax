@@ -69,7 +69,7 @@
             <v-col cols="12" sm="3" align-self="center">
               <v-sheet class="ma-2 pa-2 text-center">
                 <div style="font-size: 0.6em">결과</div>
-                {{ foreignTaxCredit.toLocaleString() }}원
+                <span class="emphasis-text">{{ foreignTaxCredit.toLocaleString() }}원</span>
               </v-sheet>
             </v-col>
             <v-col cols="12" sm="1" align-self="center">
@@ -100,10 +100,9 @@
 
         <br />한국에서 동일 국외근로소득에 대해 이미 세금을 냈거나 월급에서
         원천징수되었다면, 최대
-        <span style="font-weight: 900"
+        <span class="emphasis-text"
           >{{ foreignTaxCredit.toLocaleString() }}원</span
-        >
-        만큼 세금을 환급받을 수 있습니다.
+        >의 세금을 환급받을 수 있습니다.
       </div>
     </div>
   </v-container>
