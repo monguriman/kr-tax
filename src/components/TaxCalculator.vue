@@ -187,16 +187,17 @@ export default {
   },
   computed: {
     koreanIncome: {
-      get() {
-        return (
-          parseFloat(this.annualIncome.replace(/,/g, "")) -
-          (isNaN(this.foreignIncome)? parseFloat(this.foreignIncome.replace(/,/g, "")) : this.foreignIncome)
-        );
-      },
-      set(value) {
-        this.foreignIncome = parseFloat(this.annualIncome.replace(/,/g, "")) - value;
-      },
-    },
+  get() {
+    const annualIncomeParsed = this.annualIncome.replace(/,/g, "") !== "" ? parseFloat(this.annualIncome.replace(/,/g, "")) : 0;
+    const foreignIncomeParsed = isNaN(this.foreignIncome) ? (this.foreignIncome.replace(/,/g, "") !== "" ? parseFloat(this.foreignIncome.replace(/,/g, "")) : 0) : this.foreignIncome;
+
+    return annualIncomeParsed - foreignIncomeParsed;
+  },
+  set(value) {
+    this.foreignIncome = parseFloat(this.annualIncome.replace(/,/g, "")) - value;
+  },
+},
+
     foreignTaxCredit() {
       if (this.annualIncome && this.foreignIncome && this.calculatedTax) {
         const annualIncome = parseFloat(this.annualIncome.replace(/,/g, ""));
