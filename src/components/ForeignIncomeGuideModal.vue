@@ -199,8 +199,6 @@ export default {
         errorMsg += (errorMsg ? " " : "") + "올바른 날짜를 입력해주세요.";
       }
       if (this.startDate.slice(0, 4) != this.endDate.slice(0, 4)) {
-        console.log(this.startDate.slice(0, 4));
-        console.log(this.endDate.slice(0, 4));
         errorMsg +=
           (errorMsg ? " " : "") + "시작년도와 종료년도는 같아야 합니다.";
       }

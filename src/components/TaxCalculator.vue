@@ -7,7 +7,6 @@
         type="text"
         required
         @input="validateInput('annualIncome')"
-        @click="annualIncome = ''"
         variant="underlined"
       >
         <span
@@ -23,7 +22,6 @@
         type="text"
         required
         @input="validateInput('foreignIncome')"
-        @click="foreignIncome = ''"
         variant="underlined"
       >
         <span
@@ -49,7 +47,7 @@
         type="text"
         required
         @input="validateInput('calculatedTax')"
-        @click="calculatedTax = ''"
+
         variant="underlined"
         ><span
           class="modal-guide-text-in-input"
@@ -66,7 +64,7 @@
       </p>
 
       <div v-if="foreignTaxCredit !== null && !inputError">
-        <v-container class="calc-result" style="width: 35em">
+        <v-container style="width: 40em">
           <v-row no-gutters>
             <v-col cols="12" sm="3" align-self="center">
               <v-sheet class="ma-2 pa-2 text-center">
@@ -79,7 +77,7 @@
             <v-col cols="12" sm="1" align-self="center">
               <v-sheet class="ma-2 pa-2 text-center"> = </v-sheet>
             </v-col>
-            <v-col cols="12" sm="3" align-self="center">
+            <v-col cols="12" sm="2" align-self="center">
               <v-sheet class="ma-2 pa-2 text-center">
                 <div style="font-size: 0.6em">산출세액</div>
                 {{ calculatedTax.toLocaleString() }}
@@ -88,14 +86,14 @@
             <v-col cols="12" sm="1" align-self="center">
               <v-sheet class="ma-2 pa-2 text-center"> × </v-sheet>
             </v-col>
-            <v-col cols="12" sm="4" align-self="center">
+            <v-col cols="12" sm="5" align-self="center">
               <v-sheet class="ma-2 pa-2 text-center">
                 <div style="font-size: 0.6em">국외근로소득 - 근로소득공제</div>
                 ({{ foreignIncome.toLocaleString() }} -
-                {{ deduction(foreignIncome).toLocaleString() }})
+                {{ deduction(isNaN(this.foreignIncome)? parseFloat(this.foreignIncome.replace(/,/g, "")) : this.foreignIncome).toLocaleString() }})
                 <hr />
                 ({{ annualIncome.toLocaleString() }} -
-                {{ deduction(annualIncome).toLocaleString() }})
+                {{ deduction(isNaN(this.annualIncome)? parseFloat(this.annualIncome.replace(/,/g, "")) : this.annualIncome).toLocaleString() }})
                 <div style="font-size: 0.6em">국내근로소득 - 근로소득공제</div>
               </v-sheet>
             </v-col>
@@ -206,8 +204,8 @@ export default {
         const calculatedTax = parseFloat(this.calculatedTax.replace(/,/g, ""))
         const foreignTaxCredit =
           (calculatedTax *
-            (foreignIncome - deduction(foreignIncome))) /
-          (annualIncome - deduction(annualIncome));
+            (foreignIncome - deduction(isNaN(this.foreignIncome)? parseFloat(this.foreignIncome.replace(/,/g, "")) : this.foreignIncome))) /
+          (annualIncome - deduction(isNaN(this.annualIncome)? parseFloat(this.annualIncome.replace(/,/g, "")) : this.annualIncome));
         return Number(foreignTaxCredit.toFixed(0));
       } else {
         return null;
@@ -232,7 +230,6 @@ export default {
   methods: {
     validateInput(income) {
       let value = this[income];
-      console.log(value);
       if (value !== null && value !== undefined) {
         value = Number(value.replaceAll(",", ""));
         if (isNaN(value)) {
