@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h3 style="margin-bottom: 0.4em;">원천징수영수증 다운로드 방법</h3>
+    <h3 class="modal-title">원천징수영수증 다운로드 방법</h3>
 
     <div class="steps">
       1.
@@ -47,9 +47,4 @@ export default {
   padding-bottom: 0.5em;
 }
 
-.guide-image {
-  width: 100%;
-  margin: 0.2em 0 0.2em 0;
-  border: solid 1px rgb(228, 228, 228);
-}
 </style>

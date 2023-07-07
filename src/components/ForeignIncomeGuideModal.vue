@@ -1,6 +1,6 @@
 <template>
   <div>
-    [국외근로소득 입력 방법]
+    <h3 class="modal-title">국외근로소득 입력</h3>
     <ul>
       <li>국외에서 일하고 받은 소득은 모두 국외근로소득입니다.</li>
       <li>
@@ -15,18 +15,21 @@
         label="계산 기준년도"
         v-model="selectedYear"
         :items="['2023', '2022', '2021', '2020', '2019', '2018']"
+        variant="underlined"
       ></v-combobox>
       <v-text-field
         v-model="startDate"
         :label="`${selectedYear}년의 해외근무 시작일 (${selectedYear}년 이전 시작의 경우, ${selectedYear}-01-01)`"
         required
         type="date"
+        variant="underlined"
       />
       <v-text-field
         v-model="endDate"
         :label="`${selectedYear}년의 해외근무 종료일 (${selectedYear}년 이후 종료 예정의 경우, ${selectedYear}-12-31)`"
         required
         type="date"
+        variant="underlined"
       />
     </v-form>
     <div>

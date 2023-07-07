@@ -1,9 +1,8 @@
 <template>
   <div>
-    [총급여 입력 방법]
-    <br />
+    <h3 class="modal-title">총급여 입력</h3>
     원천징수영수증 2페이지의 (21)총급여 금액을 입력하세요.
-    <img :src="annualIncomeGuide" alt="annualIncomeGuide" style="width: 100%" />
+    <img :src="annualIncomeGuide" alt="annualIncomeGuide" class="guide-image" />
   </div>
 </template>
 

@@ -35,13 +35,18 @@ body {
   top: -10px;
 }
 
+.modal-title {
+  margin-bottom: 0.4em;
+  color: #651FFF;
+}
+
 /* 웹킷 기반 브라우저에서 스크롤바 스타일 변경 */
 .modal::-webkit-scrollbar {
   width: 8px;
 }
 
 .modal::-webkit-scrollbar-thumb {
-  background-color: #D1C4E9;
+  background-color: #d1c4e9;
   border-radius: 4px;
 }
 
@@ -60,4 +65,10 @@ body {
 .emphasis-text {
   color: #651fff;
   font-weight: 900;
+}
+
+.guide-image {
+  width: 100%;
+  margin: 0.2em 0 0.2em 0;
+  border: solid 1px rgb(228, 228, 228);
 }
