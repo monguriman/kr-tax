@@ -22,6 +22,7 @@ body {
 .modal {
   background-color: #faf7ff;
   width: 40em;
+  border-radius: 10px;
   max-height: 80vh;
   padding: 1.8em;
   align-self: center;
@@ -71,4 +72,10 @@ body {
   width: 100%;
   margin: 0.2em 0 0.2em 0;
   border: solid 1px rgb(228, 228, 228);
+  border-radius: 5px;
+}
+
+.icon {
+  color: #7C4DFF;
+  margin: 0.2em 0.4em 0.35em 0.1em;
 }

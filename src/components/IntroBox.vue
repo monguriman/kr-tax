@@ -2,7 +2,7 @@
   <h2>외국납부세액공제 간이 계산기</h2>
 
   <div style="margin-top: 2em">
-    <h4>외국납부세액공제란?</h4>
+    <h4><v-icon icon="mdi-help-circle" class="icon"/>외국납부세액공제란?</h4>
     아래 사항에 모두 해당한다면,
     외국납부세액공제를 통해 <span>세금 환급을 받을 수 있어요.</span>
     <ul style="padding-left: 2em; margin: 1em 0 1em 0">
@@ -18,7 +18,7 @@
   </div>
 
   <div style="margin-top: 2em">
-    <h4>준비물</h4>
+    <h4><v-icon icon="mdi-text-box-multiple" class="icon" />준비물</h4>
     원천징수영수증
     <span @click="showDownloadGuideModal = true" class="modal-guide-text"
       >어디서 다운받나요?</span
@@ -26,7 +26,7 @@
   </div>
 
   <div style="margin-top: 2em">
-    <h4>유의사항</h4>
+    <h4><v-icon icon="mdi-alert-circle" class="icon"/>유의사항</h4>
     <ul style="padding-left: 2em">
       <li>
         모든 급여가 원천징수영수증에 포함되어 있지 않다면 실제 공제액은
