@@ -20,7 +20,7 @@ body {
 }
 
 .modal {
-  background-color: #faf7ff;
+  background-color: #fffcfc;
   width: 40em;
   border-radius: 10px;
   max-height: 80vh;
@@ -78,4 +78,11 @@ body {
 .icon {
   color: #7C4DFF;
   margin: 0.2em 0.4em 0.35em 0.1em;
+}
+
+.hr-under-title {
+  border: 3px solid #7C4DFF;
+  margin: 10px 0 10px 0;
+  border-radius: 10px;
+  width: 10%;
 }

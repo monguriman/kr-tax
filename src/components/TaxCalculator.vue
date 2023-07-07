@@ -56,6 +56,7 @@
     </v-form>
     <div>
       <h2>외국납부세액공제 적용 가능액</h2>
+      <hr class="hr-under-title">
       <p v-if="foreignTaxCredit == null">값을 모두 입력하세요. <span>{{ inputError }}</span></p>
       
       <div v-if="foreignTaxCredit !== null && !inputError">
