@@ -6,7 +6,7 @@
     아래 사항에 모두 해당한다면,
     외국납부세액공제를 통해 <span>세금 환급을 받을 수 있어요.</span>
     <ul style="padding-left: 2em; margin: 1em 0 1em 0">
-      <li>한국과 외국에서 동일 소득에 대해 세금을 중복으로 냈어요.</li>
+      <li style="margin-bottom: 7px;">한국과 외국에서 동일 소득에 대해 세금을 중복으로 냈어요.</li>
       <li>
         외국에서 일하고 받은 소득을 한국에서 신고했어요. <br /><span
           style="font-size: 0.8em"
@@ -28,7 +28,7 @@
   <div style="margin-top: 2em">
     <h4><v-icon icon="mdi-alert-circle" class="icon" size="1.1em"/>유의사항</h4>
     <ul style="padding-left: 2em">
-      <li>
+      <li style="margin-bottom: 7px;">
         모든 급여가 원천징수영수증에 포함되어 있지 않다면 실제 공제액은
         달라져요.
       </li>

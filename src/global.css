@@ -14,7 +14,7 @@ body {
   cursor: pointer;
   font-size: 0.7em;
   position: absolute;
-  right: 10px;
+  right: 18px;
   font-weight: 700;
   z-index: 1;
 }
@@ -85,4 +85,14 @@ body {
   margin: 10px 0 10px 0;
   border-radius: 10px;
   width: 10%;
+}
+
+.no-spinners::-webkit-inner-spin-button,
+.no-spinners::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.no-spinners {
+  -moz-appearance: textfield;
 }

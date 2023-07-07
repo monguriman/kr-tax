@@ -9,6 +9,7 @@
         @input="validateInput"
         @click="annualIncome = ''"
         variant="underlined"
+        class="no-spinners"
       >
         <span
           class="modal-guide-text-in-input"
@@ -24,6 +25,7 @@
         @input="validateInput"
         @click="foreignIncome = ''"
         variant="underlined"
+        class="no-spinners"
         ><span
           class="modal-guide-text-in-input"
           @click="showForeignIncomeGuideModal = true"
@@ -38,6 +40,7 @@
         @input="validateInput"
         variant="underlined"
         readonly
+        class="no-spinners"
       ></v-text-field>
       <v-text-field
         v-model="calculatedTax"
@@ -47,6 +50,7 @@
         @input="validateInput"
         @click="calculatedTax = ''"
         variant="underlined"
+        class="no-spinners"
         ><span
           class="modal-guide-text-in-input"
           @click="showCalculatedTaxGuideModal = true"
