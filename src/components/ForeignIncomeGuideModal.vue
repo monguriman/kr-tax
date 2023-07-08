@@ -54,7 +54,7 @@
             />입력된 총급여
           </td>
           <td style="text-align: right">
-            {{ Number(value).toLocaleString() }}
+            {{ isNaN(value) ? '0' : Number(value).toLocaleString() }}
           </td>
         </tr>
         <tr>
@@ -92,7 +92,7 @@
           </td>
           <td style="text-align: right">
             <span class="emphasis-text">{{
-              foreignIncome.toLocaleString()
+              isNaN(foreignIncome) ? '0' : Number(foreignIncome).toLocaleString() 
             }}</span>
           </td>
         </tr>
@@ -118,7 +118,7 @@
             />
           </td>
           <td style="text-align: right">
-            {{ (annualIncome - foreignIncome).toLocaleString() }}
+            {{ isNaN(annualIncome - foreignIncome) ? '0' : Number(annualIncome - foreignIncome).toLocaleString()  }}
           </td>
         </tr>
       </table>
@@ -155,7 +155,7 @@ export default {
   props: ["value"],
   methods: {
     onSave() {
-      this.$emit("save", this.foreignIncome);
+      this.$emit("save", Number(this.foreignIncome));
       this.$emit("close");
     },
   },

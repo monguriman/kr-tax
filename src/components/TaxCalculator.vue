@@ -210,7 +210,7 @@ export default {
             ? parseFloat(this.annualIncome.replace(/,/g, ""))
             : 0;
         const foreignIncomeParsed = isNaN(this.foreignIncome)
-          ? this.foreignIncome.replace(/,/g, "") !== ""
+          ? (this.foreignIncome.replace(/,/g, "")) !== ""
             ? parseFloat(this.foreignIncome.replace(/,/g, ""))
             : 0
           : this.foreignIncome;
